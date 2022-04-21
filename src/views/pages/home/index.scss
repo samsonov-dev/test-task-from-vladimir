@@ -1,72 +1,81 @@
 @import 'src/assets/css/themes/light.scss';
 
-.main {
+.homePage {
     display: flex;
-    background: #E2F0F0;
+    flex-direction: column;
+    margin-top: 20px;
+    box-shadow: 0 33px 43px rgba(0, 0, 0, 0.1), 0 9.94853px 12.9632px rgba(0, 0, 0, 0.0651589), 0 4.13211px 5.38427px rgba(0, 0, 0, 0.05), 0 1.4945px 1.94738px rgba(0, 0, 0, 0.0348411);
+    border-radius: 20px;
 
-    .dashboard {
+    .main {
         display: flex;
-        flex-direction: column;
-        flex: 1 1;
-        padding-right: 120px;
+        background: #E2F0F0;
+        max-height: calc(100vh - 110px - 50px);
 
-        &__header {
+        .dashboard {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 40px;
+            flex-direction: column;
+            flex: 1 1;
+            padding-right: 120px;
 
-            &__items {
+            &__header {
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
-                gap: 8px;
+                width: 100%;
+                margin-bottom: 40px;
 
-                &--right {
-                    justify-content: flex-end;
-                }
-
-                h2 {
-                    @include font-Q-M();
-                    font-size: 34px;
-                    line-height: 42px;
-                    letter-spacing: 0.25px;
-                    color: rgba(0, 0, 0, 0.87);
-                }
-
-                .date {
+                &__items {
                     display: flex;
                     align-items: center;
-                    gap: 12px;
-                    border: 1px solid #C6CACC;
-                    border-radius: 10px;
-                    background: transparent;
-                    padding: 6px 12px;
+                    gap: 8px;
 
-                    span {
-                        @include font-R();
-                        font-size: 14px;
-                        line-height: 20px;
+                    &--right {
+                        justify-content: flex-end;
+                    }
+
+                    h2 {
+                        @include font-Q-M();
+                        font-size: 34px;
+                        line-height: 42px;
                         letter-spacing: 0.25px;
                         color: rgba(0, 0, 0, 0.87);
                     }
-                }
 
-                .printer,
-                .download {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 32px;
-                    height: 32px;
-                    background: #F7F9FA;
-                    border: none;
-                    border-radius: 4px;
+                    .date {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        border: 1px solid #C6CACC;
+                        border-radius: 10px;
+                        background: transparent;
+                        padding: 6px 12px;
 
-                    svg {
-                        width: 12px;
-                        height: 12px;
-                        fill: #78909C;
+                        span {
+                            @include font-R();
+                            font-size: 14px;
+                            line-height: 20px;
+                            letter-spacing: 0.25px;
+                            color: rgba(0, 0, 0, 0.87);
+                        }
+                    }
+
+                    .printer,
+                    .download {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 32px;
+                        height: 32px;
+                        background: #F7F9FA;
+                        border: none;
+                        border-radius: 4px;
+
+                        svg {
+                            width: 12px;
+                            height: 12px;
+                            fill: #78909C;
+                        }
                     }
                 }
             }

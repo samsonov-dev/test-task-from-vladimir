@@ -1,71 +1,151 @@
 @import 'src/assets/css/themes/light.scss';
 
 .grid {
-    width: 100%;
-    border-collapse: collapse;
+    overflow-y: scroll;
 
-    th,
-    td {
-        text-align: right;
-        padding: 0 0 0 32px;
+    &::-webkit-scrollbar {
+        width: 20px;
+        height: 20px;
+        background-color: #E2F0F0;
+        border-radius: 0;
+    }
 
-        &:first-child {
-            width: 100%;
-            text-align: left;
-            padding-left: 0;
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-corner {
+        background-color: #E2F0F0;
+        width: 20px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, .12);
+        border: 8px solid #E2F0F0;
+        border-radius: 10px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+
+        &:hover {
+            border-right-width: 6px;
+            border-left-width: 6px;
         }
     }
 
-    thead {
-        th {
-            @include font-Q-M();
-            font-size: 16px;
-            line-height: 24px;
-            letter-spacing: 0.44px;
-            color: #919699;
-            padding-bottom: 12px;
-
-            border-bottom: 2px solid #E3E5E6;
-        }
+    &::-webkit-scrollbar-thumb:horizontal {
+        min-width: 40px;
     }
 
-    tbody {
-        tr {
-            td {
-                @include font-R-M();
-                font-size: 20px;
-                line-height: 28px;
-                letter-spacing: 0.15px;
-                color: #5E6366;
+    &::-webkit-scrollbar-thumb:vertical {
+        min-height: 40px;
+    }
 
-                border-bottom: 1px solid #E3E5E6;
+    table {
+        width: 100%;
+        position: relative;
+        border-collapse: collapse;
 
-                padding-top: 18px;
-                padding-bottom: 18px;
+        thead {
+            position: sticky;
+            top: 0;
+
+            th {
+                border: 0;
+                padding: 0;
+
+                .column {
+                    @include font-Q-M();
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0.44px;
+                    color: #919699;
+                    text-align: right;
+                    padding: 0 0 12px 32px;
+                    cursor: pointer;
+
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    background-color: #E2F0F0;
+                    border-bottom: 2px solid #E3E5E6;
+
+                    .sort {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+
+                        svg {
+                            fill: #C6CACC;
+                        }
+
+                        &.Ask {
+                            svg:last-child {
+                                fill: #069697;
+                            }
+                        }
+
+                        &.Desc {
+                            svg:first-child {
+                                fill: #069697;
+                            }
+                        }
+                    }
+                }
 
                 &:first-child {
-                    color: rgba(0, 0, 0, 0.87);
+                    .column {
+                        width: 100%;
+                        text-align: left;
+                        padding-left: 0;
+                    }
                 }
             }
+        }
 
-            &:nth-last-child(-n+2) {
+        tbody {
+            tr {
                 td {
-                    border-bottom: none;
+                    @include font-R-M();
+                    font-size: 20px;
+                    line-height: 28px;
+                    letter-spacing: 0.15px;
+                    color: #5E6366;
+                    text-align: right;
+
+                    border-bottom: 1px solid #E3E5E6;
+                    padding: 18px 0 18px 32px;
+
+                    &:first-child {
+                        color: rgba(0, 0, 0, 0.87);
+                        width: 100%;
+                        text-align: left;
+                        padding-left: 0;
+                    }
                 }
-            }
 
-            &.filter {
-                input {
-                    @include font-R();
-                    font-size: 14px;
-                    line-height: 20px;
+                &:nth-last-child(-n+2) {
+                    td {
+                        border-bottom: none;
+                    }
+                }
 
-                    width: 100%;
-                    border: 1px solid #C6CACC;
-                    box-sizing: border-box;
-                    border-radius: 10px;
-                    background-color: transparent;
-                    padding: 6px 12px;
+                &.filter {
+                    position: sticky;
+                    bottom: 0;
+                    background-color: #E2F0F0;
+
+                    input {
+                        @include font-R();
+                        font-size: 14px;
+                        line-height: 20px;
+
+                        width: 100%;
+                        border: 1px solid #C6CACC;
+                        box-sizing: border-box;
+                        border-radius: 10px;
+                        background-color: transparent;
+                        padding: 6px 12px;
+                    }
                 }
             }
         }

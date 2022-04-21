@@ -3,6 +3,7 @@
 .header {
     display: flex;
     flex-flow: column nowrap;
+    max-height: 110px;
 
     .navbar {
         padding: 12px 16px;

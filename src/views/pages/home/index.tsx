@@ -1,4 +1,4 @@
-import React, {Component, FormEvent} from 'react';
+import React, {Component} from 'react';
 import './index.scss';
 import Header from '../../components/header/index';
 import ItemsService from "../../../api/services/ItemsService";
@@ -6,7 +6,7 @@ import Grid, { GridColumn } from '../../components/grid';
 import Menu from "../../components/menu";
 import {ItemCategoryType} from "../../../api/objects/ItemCategoryModel";
 import ItemModel from "../../../api/objects/ItemModel";
-import croppedArrowDown from '../../../assets/img/icon/croppedArrowDown.svg';
+import triangleDown from '../../../assets/img/icon/triangleDown.svg';
 import { ReactComponent as Printer } from '../../../assets/img/icon/printer.svg';
 import { ReactComponent as Download } from '../../../assets/img/icon/download.svg';
 
@@ -14,7 +14,7 @@ interface IHomeProps {
 }
 
 interface IHomeState {
-    filter: ItemModel;
+    selectedType: ItemCategoryType;
 }
 
 class Home extends Component<IHomeProps, IHomeState> {
@@ -22,11 +22,10 @@ class Home extends Component<IHomeProps, IHomeState> {
         super(props);
 
         this.state = {
-            filter: new ItemModel(),
+            selectedType: ItemCategoryType.None,
         };
 
         this.onSelectCategory = this.onSelectCategory.bind(this);
-        this.onInputData = this.onInputData.bind(this);
     }
 
     private data = ItemsService.generate();
@@ -61,40 +60,20 @@ class Home extends Component<IHomeProps, IHomeState> {
     ];
 
     private onSelectCategory (type: ItemCategoryType) {
-        const filter = this.state.filter;
-        filter.category = type;
         this.setState({
-            filter
+            selectedType: type
         });
     }
 
-    private onInputData (name: string, value: string) {
-        const filter = this.state.filter;
-        if (name in filter) {
-
-            // @ts-ignore
-            if (typeof filter[name] === 'number') {
-                // @ts-ignore
-                filter[name] = Number(value);
-            } else {
-                // @ts-ignore
-                filter[name] = value;
-            }
-            this.setState({
-                filter
-            });
-        }
-    }
-
     private get filteredData (): Array<ItemModel> {
-        return this.data.filter((item) => item.category === this.state.filter.category || !this.state.filter.category);
+        return this.data.filter((item) => item.category === this.state.selectedType || !this.state.selectedType);
     }
 
     render() {
         return (<div className="homePage">
             <Header />
             <div className="main">
-                <Menu items={this.categories} selected={this.state.filter.category} onSelect={this.onSelectCategory} />
+                <Menu items={this.categories} selected={this.state.selectedType} onSelect={this.onSelectCategory} />
                 <div className="dashboard">
                     <div className="dashboard__header">
                         <div className="dashboard__header__items">
@@ -103,7 +82,7 @@ class Home extends Component<IHomeProps, IHomeState> {
                         <div className="dashboard__header__items dashboard__header__items--right">
                             <button className="date">
                                 <span>Aug 21, 2021 · Sep 21 2021</span>
-                                <img src={croppedArrowDown} alt=""/>
+                                <img src={triangleDown} alt=""/>
                             </button>
                             <button className="printer">
                                 <Printer />
@@ -113,7 +92,7 @@ class Home extends Component<IHomeProps, IHomeState> {
                             </button>
                         </div>
                     </div>
-                    <Grid data={this.filteredData} columns={this.columns} filter={this.state.filter} onInput={this.onInputData} />
+                    <Grid data={this.filteredData} columns={this.columns} />
                 </div>
             </div>
         </div>);
