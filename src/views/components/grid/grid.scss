@@ -1,0 +1,73 @@
+@import 'src/assets/css/themes/light.scss';
+
+.grid {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+        text-align: right;
+        padding: 0 0 0 32px;
+
+        &:first-child {
+            width: 100%;
+            text-align: left;
+            padding-left: 0;
+        }
+    }
+
+    thead {
+        th {
+            @include font-Q-M();
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.44px;
+            color: #919699;
+            padding-bottom: 12px;
+
+            border-bottom: 2px solid #E3E5E6;
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                @include font-R-M();
+                font-size: 20px;
+                line-height: 28px;
+                letter-spacing: 0.15px;
+                color: #5E6366;
+
+                border-bottom: 1px solid #E3E5E6;
+
+                padding-top: 18px;
+                padding-bottom: 18px;
+
+                &:first-child {
+                    color: rgba(0, 0, 0, 0.87);
+                }
+            }
+
+            &:nth-last-child(-n+2) {
+                td {
+                    border-bottom: none;
+                }
+            }
+
+            &.filter {
+                input {
+                    @include font-R();
+                    font-size: 14px;
+                    line-height: 20px;
+
+                    width: 100%;
+                    border: 1px solid #C6CACC;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    background-color: transparent;
+                    padding: 6px 12px;
+                }
+            }
+        }
+    }
+}

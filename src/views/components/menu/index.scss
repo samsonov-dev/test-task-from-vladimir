@@ -1,0 +1,99 @@
+@import 'src/assets/css/themes/light.scss';
+
+.menu {
+    width: 25%;
+    padding: 32px 76px 32px 64px;
+    box-sizing: border-box;
+
+    .create {
+        display: flex;
+        align-items: center;
+        background: #FFFFFF;
+        border: none;
+        box-shadow: 0 16px 24px rgba(54, 123, 245, 0.16), 0 6px 12px rgba(54, 123, 245, 0.16);
+        border-radius: 99px;
+        padding: 14px 32px 14px 24px;
+
+        img {
+            margin-right: 16px;
+        }
+
+        span {
+            @include font-Q-M();
+            font-size: 20px;
+            line-height: 28px;
+            letter-spacing: 0.15px;
+            color: #367BF5;
+        }
+    }
+
+    .presetFilters {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            padding: 8px 16px;
+
+            svg {
+                fill: #78909C;
+
+                &.pieChart {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                &.checkMark {
+                    width: 24px;
+                    height: 20px;
+                }
+
+                &.printer {
+                    width: 20px;
+                    height: 18px;
+                }
+            }
+            .info {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                margin: 0;
+                text-align: left;
+
+                .title {
+                    @include font-Q-M();
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0.44px;
+                    color: rgba(0, 0, 0, 0.87);
+                }
+
+                .desc {
+                    @include font-R();
+                    font-size: 12px;
+                    line-height: 16px;
+                    letter-spacing: 0.4px;
+                    color: #5E6366;
+                }
+            }
+
+            &.active {
+                background: #E6EFFF;
+                cursor: default;
+
+                svg {
+                    fill: #367BF5;
+                }
+            }
+        }
+    }
+}

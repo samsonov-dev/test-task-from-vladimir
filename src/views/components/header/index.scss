@@ -1,0 +1,106 @@
+@import 'src/assets/css/themes/light.scss';
+
+.header {
+    display: flex;
+    flex-flow: column nowrap;
+
+    .navbar {
+        padding: 12px 16px;
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        &__items {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            &--right {
+                justify-content: flex-end;
+            }
+
+            .logo {
+                max-height: 40px;
+            }
+
+            .avatar {
+                max-width: 40px;
+                max-height: 40px;
+            }
+
+            .help {
+                display: flex;
+                align-items: center;
+                background: #F7F9FA;
+                border: none;
+                border-radius: 10px;
+                padding: 8px 9px;
+
+                span {
+                    @include font-R();
+                    font-size: 16px;
+                    line-height: 24px;
+                    letter-spacing: 0.44px;
+                    color: #5E6366;
+                }
+
+                img {
+                    margin-left: 10px;
+                }
+            }
+
+            .upgrade {
+                @include font-R-M();
+                font-size: 14px;
+                line-height: 24px;
+                letter-spacing: 0.75px;
+                color: #367BF5;
+                text-transform: uppercase;
+
+                background: #FFFFFF;
+                box-shadow: 0 4px 8px rgba(54, 123, 245, 0.16), 0 2px 4px rgba(54, 123, 245, 0.24);
+                border: none;
+                border-radius: 10px;
+                padding: 8px 9px;
+            }
+        }
+    }
+
+    .tabs {
+        border-bottom: 1px dashed #E3E5E6;
+
+        &__inner {
+            display: flex;
+            gap: 6px;
+            width: 75%;
+            margin-left: auto;
+
+            .tab {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                background: transparent;
+                border: none;
+                padding: 10px 14px;
+                transform: translateY(1px);
+
+                @include font-R();
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0.44px;
+                color: rgba(0, 0, 0, 0.87);
+
+                &.active {
+                    background: #FFFFFF;
+                    border-width: 1px 1px 0 1px;
+                    border-style: solid;
+                    border-color: #C6CACC;
+                    border-radius: 4px 4px 0 0;
+                }
+            }
+        }
+    }
+}

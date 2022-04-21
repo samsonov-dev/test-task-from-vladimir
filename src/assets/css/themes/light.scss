@@ -1,0 +1,25 @@
+@use '../fonts/fonts.scss';
+
+@mixin font-R() {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin font-R-M() {
+    font-family: Roboto Medium, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@mixin font-Q() {
+    font-family: Quicksand, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin font-Q-M() {
+    font-family: Quicksand Medium, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}

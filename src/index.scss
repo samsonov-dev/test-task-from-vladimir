@@ -1,0 +1,8 @@
+@import 'src/assets/css/themes/light.scss';
+
+body {
+    @include font-R();
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
