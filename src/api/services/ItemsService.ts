@@ -1,9 +1,30 @@
-import ItemModel, { IItem } from '../objects/ItemModel';
+import ItemModel, {IItem} from '../objects/ItemModel';
+import {ItemCategoryModel, ItemCategoryType} from "../objects/ItemCategoryModel";
 
 class ItemsService {
-    public static generate (): ItemModel[] {
+    public static categories (): Array<ItemCategoryModel> {
+        return [
+            new ItemCategoryModel({
+                name: 'Even rows of data',
+                description: 'Display rows 2, 4, 6 etc',
+                type: ItemCategoryType.Even,
+            }),
+            new ItemCategoryModel({
+                name: 'Odd rows of data',
+                description: 'Display rows 1, 3, 5 etc',
+                type: ItemCategoryType.Odd,
+            }),
+            new ItemCategoryModel({
+                name: 'All data',
+                description: 'Display all data',
+                type: ItemCategoryType.None,
+            })
+        ]
+    }
+
+    public static generate (): Array<ItemModel> {
         const items = [];
-        for (let i = 10; i >= 0; i--) {
+        for (let i = 20; i >= 0; i--) {
             items.push(new ItemModel({
                 data: `Data${i}`,
                 summary1: this.randomNumber(),
@@ -11,6 +32,7 @@ class ItemsService {
                 summary3: this.randomNumber(),
                 summary4: this.randomNumber(),
                 summary5: this.randomNumber(),
+                category: (i % 2) ? ItemCategoryType.Odd : ItemCategoryType.Even,
             } as IItem))
         }
 

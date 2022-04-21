@@ -1,3 +1,5 @@
+import {ItemCategoryType} from "./ItemCategoryModel";
+
 export interface IItem {
     data: string;
     summary1: number;
@@ -5,6 +7,7 @@ export interface IItem {
     summary3: number;
     summary4: number;
     summary5: number;
+    category: ItemCategoryType;
 }
 
 export const DEFAULT_ITEM: IItem = {
@@ -14,6 +17,7 @@ export const DEFAULT_ITEM: IItem = {
     summary3: 0,
     summary4: 0,
     summary5: 0,
+    category: ItemCategoryType.None,
 };
 
 export class ItemModel implements IItem {
@@ -32,6 +36,8 @@ export class ItemModel implements IItem {
     summary4!: number;
 
     summary5!: number;
+
+    category!: ItemCategoryType;
 }
 
 export default ItemModel;
