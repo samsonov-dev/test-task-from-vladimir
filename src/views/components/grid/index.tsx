@@ -131,7 +131,7 @@ class Grid extends Component<GridProps, IGridState> {
                     <tr className="filter">
                         {this.props.columns.map(column =>
                             <td key={`item_filter_${column.field}`}>
-                                <input type="text" name={column.field} onInput={(event: ChangeEvent<HTMLInputElement>) => this.handleChange(event.target.value, column.field as keyof ItemModel)} />
+                                <input placeholder={column.field === 'data' ? 'Search...' : ''} type="text" name={column.field} onInput={(event: ChangeEvent<HTMLInputElement>) => this.handleChange(event.target.value, column.field as keyof ItemModel)} />
                             </td>
                         )}
                     </tr>
